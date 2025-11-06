@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="estudianteForm">
+      <h3>Datos del Estudiante</h3>
+      <input type="text" id="estudianteForm_inNombre" placeholder="Nombre"></input>
+      <input type="text" id="estudianteForm_incedula" placeholder="Cedula"></input>
+      <input type="text" id="estudianteForm_inSexo" placeholder="Sexo"></input>
+      <input type="text" id="estudianteForm_inNota" placeholder="Nota"></input>
+      <button id="estudianteForm_btProcesar">Procesar</button> 
+    </section>
+    <section id="mainForm">
+      <h3>datos del examen</h3>
+      <div id="mainForm_salida"></div>
+    </section>
+  </body>
+    <script type="module">
+      import Cl_principal from "./js/Cl_principal.js";
+      new Cl_principal()
+    </script>
+</html>

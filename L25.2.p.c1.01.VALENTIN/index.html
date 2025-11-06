@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda VALENTÍN 💐 - Reporte de Ventas</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f8f8f8; color: #333; }
+        h1 { color: #8e44ad; border-bottom: 2px solid #8e44ad; padding-bottom: 5px; }
+        h2 { color: #3498db; margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+        .box { background-color: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .box p { font-size: 1.1em; line-height: 1.4; }
+        #nuevo-ramo-individual p { 
+            background-color: #ecf0f1; 
+            padding: 8px; 
+            border-left: 4px solid #3498db; 
+            margin: 6px 0;
+            border-radius: 4px;
+        }
+        strong { color: #2c3e50; }
+        input, select { padding: 8px; margin: 4px 0 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box; }
+        button { background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 10px; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Tienda VALENTÍN 🌹 Ventas</h1>
+    
+    <div id="data-entry" class="box">
+        <h2>➕ Agregar Nuevo Ramo</h2>
+        <form id="nuevo-ramo-form">
+            <label for="codigo">Código:</label><input type="text" id="codigo" required>
+            <label for="costo">Costo Neto:</label><input type="number" id="costo" min="0" step="0.01" required>
+            <label for="envase">Envase (1, 2, 3):</label>
+            <select id="envase" required>
+                <option value="1">1 (Pequeño)</option>
+                <option value="2">2 (Mediano)</option>
+                <option value="3">3 (Grande)</option>
+            </select>
+            
+            <label for="ramoTipo">Tipo:</label>
+            <select id="ramoTipo" required>
+                <option value="flores">💐 Flores</option>
+                <option value="frutas">🍎 Frutas</option>
+            </select>
+            
+            <label for="tipoExtra">Especificación:</label>
+            <select id="tipoExtra" required>
+                <option value="A" class="option-flores">Flores Artificiales (A)</option>
+                <option value="N" class="option-flores">Flores Naturales (N)</option>
+                <option value="SI" class="option-frutas">Frutas Con Extra (SI)</option>
+                <option value="NO" class="option-frutas">Frutas Sin Extra (NO)</option>
+            </select>
+            <button type="submit">Procesar y Recalcular Totales 🔄</button>
+        </form>
+
+        <h3>Ramo Individual Recién Ingresado</h3>
+        <div id="nuevo-ramo-individual">
+            <p>Aún no se ha ingresado un ramo.</p>
+        </div>
+    </div>
+
+    <div class="resultados-globales box">
+        <h2>📊 Resumen Acumulado de la Jornada</h2>
+        <p><strong>Total Vendido 💵:</strong> <span id="resultado-total-vendido">Calculando...</span></p>
+        <p><strong>Cant. Flores Naturales 🌿:</strong> <span id="cantidad-naturales">Calculando...</span></p>
+        <p><strong>Cant. Naturales c/ Envase Mediano (2) 📦:</strong> <span id="cantidad-naturales-medianas">Calculando...</span></p>
+        <p><strong>% Naturales c/ Envase Mediano:</strong> <span id="resultado-porcentaje">Calculando...</span></p>
+    </div>
+    
+    <script type="module" src="dist/index.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ramoTipoSelect = document.getElementById('ramoTipo');
+            const tipoExtraSelect = document.getElementById('tipoExtra');
+            
+            function updateTipoExtraOptions() {
+                const selectedType = ramoTipoSelect.value;
+                const optionsFlores = document.querySelectorAll('.option-flores');
+                const optionsFrutas = document.querySelectorAll('.option-frutas');
+                
+                optionsFlores.forEach(opt => {
+                    opt.style.display = 'none';
+                    opt.disabled = true;
+                });
+                optionsFrutas.forEach(opt => {
+                    opt.style.display = 'none';
+                    opt.disabled = true;
+                });
+                
+                if (selectedType === 'flores') {
+                    optionsFlores.forEach(opt => {
+                        opt.style.display = 'block';
+                        opt.disabled = false;
+                    });
+                    tipoExtraSelect.value = 'A'; 
+                } else if (selectedType === 'frutas') {
+                    optionsFrutas.forEach(opt => {
+                        opt.style.display = 'block';
+                        opt.disabled = false;
+                    });
+                    tipoExtraSelect.value = 'SI';
+                }
+            }
+
+            ramoTipoSelect.addEventListener('change', updateTipoExtraOptions);
+            updateTipoExtraOptions(); 
+        });
+    </script>
+</body>
+</html>

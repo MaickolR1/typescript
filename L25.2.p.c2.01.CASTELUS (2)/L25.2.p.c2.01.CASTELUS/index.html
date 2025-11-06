@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CASTELUS C.A. - Procesamiento de Platos (MVC)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      section {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      input,
+      select,
+      button {
+        padding: 8px;
+        margin: 4px 0;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      h3,
+      h4 {
+        color: #333;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      strong {
+        font-weight: bold;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .stat-item {
+        padding: 5px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CASTELUS C.A.</h1>
+
+    <section>
+      <h3>Datos del Nuevo Plato</h3>
+      <div id="platoForm">
+        <label for="platoForm_slTipo">Tipo de Plato:</label>
+        <select id="platoForm_slTipo">
+          <option value="1">1 - Almuerzo</option>
+          <option value="2">2 - Cena</option>
+        </select>
+
+        <label for="platoForm_inCodigo">Código:</label>
+        <input
+          type="text"
+          id="platoForm_inCodigo"
+          placeholder="Ejem: A01 o C01"
+          required
+        />
+
+        <label for="platoForm_inCosto">Costo Base ($):</label>
+        <input
+          type="number"
+          id="platoForm_inCosto"
+          placeholder="Costo base (Ejem: 100)"
+          min="0"
+          required
+        />
+
+        <label for="platoForm_inOrigen"
+          >Origen (1=Nacional, 2=Internacional):</label
+        >
+        <input
+          type="number"
+          id="platoForm_inOrigen"
+          placeholder="1 o 2"
+          min="1"
+          max="2"
+          required
+        />
+      </div>
+
+      <div id="almuerzoForm">
+        <label for="almuerzoForm_inDetalle"
+          >Almuerzo: ¿Lleva sopa? (escriba 'si' o 'no'):</label
+        >
+        <input
+          type="text"
+          id="almuerzoForm_inDetalle"
+          placeholder="si o no"
+          required
+        />
+        <button id="almuerzoForm_btProcesar">Procesar Almuerzo</button>
+      </div>
+
+      <div id="cenaForm" style="display: none">
+        <label for="cenaForm_inDetalle"
+          >Cena: Especialidad (1=veg, 2=mar, 3=tierra):</label
+        >
+        <input
+          type="number"
+          id="cenaForm_inDetalle"
+          placeholder="1, 2 o 3"
+          min="1"
+          max="3"
+          required
+        />
+        <button id="cenaForm_btProcesar">Procesar Cena</button>
+      </div>
+    </section>
+
+    <section id="mainForm_salida">
+      <h3>Reporte de Platos Procesados</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Origen</th>
+            <th>Costo Base</th>
+            <th>Ganancia</th>
+            <th>Precio Final</th>
+            <th>Ganancia Nacio</th>
+          </tr>
+        </thead>
+        <tbody id="tabla_salida"></tbody>
+      </table>
+
+      <hr />
+      <h4>*** ESTADÍSTICAS FINALES DEL RESTAURANTE ***</h4>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <p>Cantidad Total de Platos: <strong id="lblCntPlatos">0</strong></p>
+          <p>Cantidad Internacionales: <strong id="lblCntInt">0</strong></p>
+        </div>
+        <div class="stat-item">
+          <p>
+            Total Pagado por Clientes:
+            <strong id="lblTotalPagado">$0.00</strong>
+          </p>
+          <p>
+            Ganancia Acumulada Nacional:
+            <strong id="lblGananciaNacional">$0.00</strong>
+          </p>
+        </div>
+        <div class="stat-item">
+          <p>
+            Porcentaje de Platos Internacionales:
+            <strong id="lblPorcInt">0.00%</strong>
+          </p>
+        </div>
+        <div class="stat-item">
+          <p>
+            Porcentaje Ganancia Nacional (Respecto al Total Pagado):
+            <strong id="lblPorcGananciaNacional">0.00%</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./dist/src/Cl_index.js"></script>
+  </body>
+</html>

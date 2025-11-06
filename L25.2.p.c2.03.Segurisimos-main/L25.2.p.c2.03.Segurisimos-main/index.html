@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos para la defensa</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h2>SEGURÍSIMOS</h2>
+    <section id="polizaForm" hidden>
+        <h3 style="width: 250px;">Póliza de <span id="polizaForm_lblTipo"></span></h3>
+        <label>Id:
+            <input type="number" id="polizaForm_inId"></input>
+        </label>
+        <label>Monto:
+            <input type="number" id="polizaForm_inMontoAsegurar"></input>
+        </label>
+        <label>% cobertura:
+            <input type="number" id="polizaForm_inPorcentajeCobertura"></input>
+        </label>
+        <label hidden id="polizaForm_divInEdad">Edad:
+            <input type="number" id="polizaForm_inEdad"></input>
+        </label>
+        <label hidden id="polizaForm_divInAnio">Año:
+            <input type="number" id="polizaForm_inAnio"></input>
+        </label>
+        <div>
+            <button id="polizaForm_btAceptarVida" hidden>Aceptar</button>
+            <button id="polizaForm_btAceptarVehiculo" hidden>Aceptar</button>
+            <button id="polizaForm_btCancelar">Cancelar</button>
+        </div>
+    </section>
+    <section id="mainForm">
+        <h3>Pólizas procesadas</h3>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Monto</th>
+                <th>%</th>
+                <th>Edad</th>
+                <th>Año</th>
+                <th>Cobertura</th>
+                <th>A pagar</th>
+            </thead>
+            <tbody id="mainForm_dataPolizas"></tbody>
+        </table>
+        <div class="divBotones">
+            <button id="mainForm_btAgregarVida">+Póliza vida</button>
+            <button id="mainForm_btAgregarVehiculo">+Póliza vehículo</button>
+        </div>
+        <h3>Info de la aseguradora</h3>
+        <div class="divSalida">
+            <label>Total pagado: $
+                <span id="mainForm_lblTotalPagado"></span>
+            </label>
+            <label>Cantidad de pólizas:
+                <span id="mainForm_lblCantidadPolizas"></span>
+            </label>
+            <label>Promedio monto pagado: $
+                <span id="mainForm_lblPromedioMontoPagado"></span>
+            </label>
+        </div>
+    </section>
+    <script type="module">
+        import Cl_index from "./dist/Cl_index.js";
+        new Cl_index()
+    </script>
+</body>
+
+</html>

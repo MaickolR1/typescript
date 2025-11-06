@@ -1,0 +1,10 @@
+{
+  "name": "tienda-valentin",
+  "version": "1.0.0",
+  "description": "Ejercicio MVC de la tienda Valentín",
+  "main": "index.js",
+  "type": "module", 
+  "scripts": {
+    "start": "node index.js"
+  }
+}

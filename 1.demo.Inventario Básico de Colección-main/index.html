@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario Básico</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 600px;
+        margin: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 6px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      button {
+        margin: 2px;
+      }
+      section {
+        margin-top: 15px;
+      }
+      #inventario_divArticulosRegistrados {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>INVENTARIO BÁSICO DE COLECCIÓN</h3>
+
+    <section id="inventario">
+      <div>
+        <button id="inventario_btAgregarItem">Agregar Artículo</button>
+      </div>
+    </section>
+
+    <section>
+      <strong>Ordenar por:</strong>
+      <button id="inventario_btOrdenarTitulo">Título</button>
+      <button id="inventario_btOrdenarDueno">Dueño</button>
+      <button id="inventario_btOrdenarCantidad">Cantidad</button>
+      <button id="inventario_btOrdenarFecha">Fecha Reg.</button>
+    </section>
+
+    <section>
+      <h4>ARTÍCULOS REGISTRADOS</h4>
+      <div id="inventario_divArticulosRegistrados"></div>
+    </section>
+
+    <script type="module">
+      // -> Importamos el Cl_index (del inventario)
+      import Cl_index from "./dist/Cl_index.js";
+      new Cl_index();
+    </script>
+  </body>
+</html>

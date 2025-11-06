@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* Opciones de Tipado */
+    "target": "ES2020" /* Especifica la versión de ECMAScript objetivo. */,
+    "module": "ES2020" /* Especifica el sistema de módulos generado. ES2020/ESNext es para módulos nativos del navegador. */,
+    "moduleResolution": "node" /* Estrategia de resolución de módulos: 'node' (útil para el manejo de rutas relativas). */,
+
+    /* Opciones de Salida y Directorios */
+    "outDir": "./dist" /* Redirige la salida de la estructura del directorio a este directorio. */,
+    "rootDir": "./" /* Especifica el directorio raíz de los archivos de entrada. */,
+
+    /* Strictness y Verificaciones de Errores */
+    "strict": true /* Habilita todas las opciones estrictas de comprobación de tipos. Recomendado. */,
+    "esModuleInterop": true /* Permite la interoperabilidad entre módulos CommonJS y ES Modules. */,
+    "forceConsistentCasingInFileNames": true /* Asegura que las referencias a archivos solo difieran en el uso de mayúsculas y minúsculas. */,
+    "skipLibCheck": true /* Omite la comprobación de tipos de todos los archivos de declaración (.d.ts) de la librería. */,
+
+    /* Configuración para el Navegador */
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ] /* Incluye bibliotecas de tipos para ES2020 y para manipular el DOM del navegador. */
+  },
+  "include": ["**/*.ts"] /* Incluye todos los archivos .ts en el proyecto. */,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ] /* Excluye los directorios node_modules y dist de la compilación. */
+}

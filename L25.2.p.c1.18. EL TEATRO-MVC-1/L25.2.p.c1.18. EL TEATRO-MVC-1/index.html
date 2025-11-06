@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EL TEATRO</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Estilos básicos para mejor visualización */
+      body {
+        font-family: sans-serif;
+      }
+      section {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+      }
+      #mainForm_salida {
+        min-height: 100px;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+      .titulo {
+        color: blue;
+      }
+      .total {
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="titulo">18. EL TEATRO</h1>
+    <section id="familiaForm">
+      <h3>Datos de Familia</h3>
+      <input
+        type="text"
+        id="familiaForm_inNombre"
+        placeholder="Nombre de la Familia"
+      />
+      <input
+        type="number"
+        id="familiaForm_inCantAdulto"
+        placeholder="Cantidad de Adultos"
+      />
+      <input
+        type="number"
+        id="familiaForm_inCantNino"
+        placeholder="Cantidad de Niños"
+      />
+      <button id="familiaForm_btProcesar">Procesar Familia</button>
+    </section>
+
+    <section id="mainForm">
+      <h3>Recaudación y Pagos</h3>
+      <div id="mainForm_salida"></div>
+    </section>
+
+    <script type="module">
+      // ¡IMPORTANTE! La ruta apunta ahora a la carpeta 'dist'
+      import Cl_principal from "./dist/Cl_principal.js";
+      new Cl_principal();
+    </script>
+  </body>
+</html>
